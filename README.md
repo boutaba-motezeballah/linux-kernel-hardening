@@ -1,10 +1,10 @@
 # Boutaba-Kernel-Hardening
 A lightweight Linux Kernel Module (LKM) written in pure C for advanced kernel space subsystem protection and modular safe-vault telemetry.
-# 🥷 Boutaba Linux Kernel Hardening Module (v1.0)
+#  Boutaba Linux Kernel Hardening Module (v1.0)
 
 A lightweight Linux Kernel Module (LKM) written in pure C, optimized for modern **Arch Linux** kernel headers. It explores the foundational hooks of kernel space programming to establish an isolated safe-vault subsystem framework.
 
-## 🌀 Architectural Features
+##  Architectural Features
 
 * **Low-Level Subsystem Hooking:** Operates directly inside Ring 0 (Kernel Space), bypassing standard User Space limitations to interface with CPU memory vectors.
 * **Synchronized Lifecycle Management:** Implements precise macros (`__init` and `__exit`) linked to core kernel runtime modules for smooth injection (`insmod`) and removal (`rmmod`).
