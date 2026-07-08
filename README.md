@@ -19,7 +19,7 @@ The **Boutaba-Kernel-Hardening** module offers an operational template designed 
 
 ---
 
-## 📊 Section 2: Structural Architecture & Subsystem Grid
+##  Section 2: Structural Architecture & Subsystem Grid
 
 The underlying architecture operates under structural constraints to eliminate synchronization locks and prevent dynamic race conditions within multi-core SMP scheduling trees.
 
