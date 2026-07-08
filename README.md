@@ -27,27 +27,28 @@ graph TD
 
 ---
 
-##  Project Goals (الهدف من المشروع)
-*   Hardening Linux kernels.
-*   Isolated logging.
-*   Low-overhead protection.
+# Boutaba Kernel Hardening Engine (Arch Linux & MSYS2)
 
----
+##  Project Overview
+A low-level Linux Kernel Module (LKM) and auditor for **Arch Linux** with **MSYS2 (MinGW)** cross-compilation support.
 
-##  Compilation & Testing (طريقة التشغيل)
-
+##  Arch Linux Compilation & Deployment
 ```bash
-# 1. Install headers
-sudo apt-get install build-essential linux-headers-\$(uname -r)
-# 2. Compile
+# Arch: Setup & Build
+sudo pacman -Syu --needed base-devel linux-headers
 make
-# 3. Load
+
+# Insert Module
 sudo insmod boutaba_kernel_hardening.ko
-# 4. Verify
-dmesg | grep -i "boutaba"
 ```
 
----
+##  MSYS2 Testing Platform
+```bash
+# MSYS2: Setup
+pacman -Syu
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+```
+
 
 ##  Component Breakdown
 
