@@ -8,21 +8,15 @@ This repository contains a Linux Kernel Module (LKM) written in 100% pure x86_64
 ## Code Flow
 ```mermaid
 graph TD
-    classDef default fill:#111827,stroke:#374151,stroke-width:2px,color:#9ca3af;
-    classDef target fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#d1d5db;
-    classDef logic fill:#1f2937,stroke:#d97706,stroke-width:2px,color:#d1d5db,font-weight:bold;
-    classDef action fill:#1f2937,stroke:#ef4444,stroke-width:2px,color:#d1d5db,font-weight:bold;
-    classDef secure fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#d1d5db,font-weight:bold;
-
-    A[User-Space Syscall] --> B(Kernel Boundary)
-    B --> C{Assembly LKM Check}
-    C -->|Unauthorized| D[Block Process]
-    C -->|Authorized| E[Allow Execution]
-
-    class A,B target;
-    class C logic;
-    class D action;
-    class E secure;
+    classDef default fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#f3f4f6;
+    
+    A[User-Space] -->|Syscall| B(Kernel Table)
+    B -->|Hook| C{Boutaba LKM}
+    C -->|Unauthorized| D[Detection Engine]
+    C -->|Safe Mode| E[Subsystem Guard]
+    D -->|Log| F[Telemetry]
+    D -->|Block| G[Action]
+    E -->|Enforce| H[Memory Pages]
 ```
 
 ---
