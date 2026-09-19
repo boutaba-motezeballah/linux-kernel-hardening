@@ -8,8 +8,6 @@ This repository contains a Linux Kernel Module (LKM) written in 100% pure x86_64
 ## Code Flow
 ```mermaid
 graph TD
-    classDef default fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#f3f4f6;
-    
     A[User-Space] -->|Syscall| B(Kernel Table)
     B -->|Hook| C{Boutaba LKM}
     C -->|Unauthorized| D[Detection Engine]
