@@ -8,10 +8,11 @@ This repository contains a Linux Kernel Module (LKM) written in 100% pure x86_64
 ## Code Flow
 ```mermaid
 graph TD
-    classDef target fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#ffffff;
-    classDef logic fill:#d97706,stroke:#b45309,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef action fill:#ef4444,stroke:#b91c1c,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef secure fill:#10b981,stroke:#047857,stroke-width:2px,color:#ffffff,font-weight:bold;
+    classDef default fill:#111827,stroke:#374151,stroke-width:2px,color:#9ca3af;
+    classDef target fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#d1d5db;
+    classDef logic fill:#1f2937,stroke:#d97706,stroke-width:2px,color:#d1d5db,font-weight:bold;
+    classDef action fill:#1f2937,stroke:#ef4444,stroke-width:2px,color:#d1d5db,font-weight:bold;
+    classDef secure fill:#1f2937,stroke:#10b981,stroke-width:2px,color:#d1d5db,font-weight:bold;
 
     A[User-Space Syscall] --> B(Kernel Boundary)
     B --> C{Assembly LKM Check}
