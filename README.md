@@ -8,22 +8,22 @@ This repository contains a Linux Kernel Module (LKM) written in 100% pure x86_64
 ## Code Flow
 ```mermaid
 graph TD
-    A[User-Space] -->|Syscall| B(Kernel Table)
-    B -->|Hook| C{Boutaba LKM}
-    C -->|Unauthorized| D[Detection Engine]
-    C -->|Safe Mode| E[Subsystem Guard]
-    D -->|Log| F[Telemetry]
-    D -->|Block| G[Action]
-    E -->|Enforce| H[Memory Pages]
+    A["<b style='color:#ffffff'>User-Space</b>"] -->|Syscall| B["<b style='color:#ffffff'>Kernel Table</b>"]
+    B -->|Hook| C{"<b style='color:#ffffff'>Boutaba LKM</b>"}
+    C -->|Unauthorized| D["<b style='color:#ffffff'>Detection Engine</b>"]
+    C -->|Safe Mode| E["<b style='color:#ffffff'>Subsystem Guard</b>"]
+    D -->|Log| F["<b style='color:#ffffff'>Telemetry</b>"]
+    D -->|Block| G["<b style='color:#ffffff'>Action</b>"]
+    E -->|Enforce| H["<b style='color:#ffffff'>Memory Pages</b>"]
 
-    style A fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
-    style B fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
-    style C fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
-    style D fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
-    style E fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
-    style F fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
-    style G fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
-    style H fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
+    style A fill:#000000,stroke:#d97706,stroke-width:2px
+    style B fill:#000000,stroke:#1e3a8a,stroke-width:2px
+    style C fill:#000000,stroke:#d97706,stroke-width:2px
+    style D fill:#000000,stroke:#1e3a8a,stroke-width:2px
+    style E fill:#000000,stroke:#1e3a8a,stroke-width:2px
+    style F fill:#000000,stroke:#1e3a8a,stroke-width:2px
+    style G fill:#000000,stroke:#d97706,stroke-width:2px
+    style H fill:#000000,stroke:#1e3a8a,stroke-width:2px
 ```
 
 ---
