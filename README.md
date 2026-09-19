@@ -1,59 +1,62 @@
-# Boutaba Kernel Hardening Engine (LKM)
+# Process-Watchdog-Auditor
 
-##  Project Overview
-A Linux Kernel Module (LKM) in C for system-space protection, focusing on mitigating privilege escalation via subsystem hooks and memory immutability.
+## Overview
+This repository contains a Linux Kernel Module (LKM) written in 100% pure x86_64 Assembly (NASM) for Arch Linux. It handles system-space protection by intercepting system calls directly at the kernel boundary to check process security and verify data integrity.
 
 ---
 
-##  Kernel Hardening Architecture (المخطط المعماري)
-
+## Code Flow
 ```mermaid
 graph TD
     classDef default fill:#1f2937,stroke:#4b5563,stroke-width:2px,color:#f3f4f6;
-    
-    A[User-Space] -->|Syscall| B(Kernel Table)
-    B -->|Hook| C{Boutaba LKM}
-    C -->|Unauthorized| D[Detection Engine]
-    C -->|Safe Mode| E[Subsystem Guard]
-    D -->|Log| F[Telemetry]
-    D -->|Block| G[Action]
-    E -->|Enforce| H[Memory Pages]
-```
+    classDef logic fill:#d97706,stroke:#b45309,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef action fill:#ef4444,stroke:#b91c1c,stroke-width:2px,color:#fff,font-weight:bold;
+    classDef secure fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff,font-weight:bold;
 
-### Components
-1. **Syscall Interception:** Monitors kernel boundaries.
-2. **Safe-Vault Telemetry:** Secure runtime monitoring.
-3. **Write-Protection:** Secures kernel data.
+    A[User-Space Syscall] --> B(Kernel Boundary)
+    B --> C{Assembly LKM Check}
+    C -->|Unauthorized| D[Block Process]
+    C -->|Authorized| E[Allow Execution]
+
+    class C logic;
+    class D action;
+    class E secure;
+```
 
 ---
 
-# Boutaba Kernel Hardening Engine (Arch Linux & MSYS2)
+## Build and Run
+Make sure you have `nasm`, `make`, and `linux-headers` installed on your Arch Linux environment.
 
-##  Project Overview
-A low-level Linux Kernel Module (LKM) and auditor for **Arch Linux** with **MSYS2 (MinGW)** cross-compilation support.
-
-##  Arch Linux Compilation & Deployment
 ```bash
-# Arch: Setup & Build
-sudo pacman -Syu --needed base-devel linux-headers
+# Compile and build the kernel module automatically
 make
 
-# Insert Module
-sudo insmod boutaba_kernel_hardening.ko
+# Insert the compiled module into the Linux kernel
+sudo insmod watchdog_auditor.ko
+
+# Remove the module from the kernel
+sudo rmmod watchdog_auditor
 ```
 
-##  MSYS2 Testing Platform
-```bash
-# MSYS2: Setup
-pacman -Syu
-pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+---
+
+## Project Structure (Makefile Code)
+This is the Makefile used to track and build the assembly kernel module natively:
+
+```makefile
+ASM=nasm
+ASMFLAGS=-f elf64
+LD=ld
+
+all: watchdog_auditor
+
+watchdog_auditor: main.o
+	\$(LD) main.o -o watchdog_auditor
+
+main.o: main.asm
+	\$(ASM) \$(ASMFLAGS) main.asm -o main.o
+
+clean:
+	rm -f *.o watchdog_auditor
 ```
-
-
-##  Component Breakdown
-
-| Component | Function |
-| :--- | :--- |
-| **Syscall Hooking** | Control-flow integrity |
-| **Memory Auditor** | Write Protect enforcement |
-| **Telemetry Logger** | Stack tracking |
