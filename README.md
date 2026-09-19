@@ -16,14 +16,14 @@ graph TD
     D -->|Block| G[Action]
     E -->|Enforce| H[Memory Pages]
 
-    style A fill:#000000,stroke:#d97706,color:#d97706
-    style B fill:#0d1117,stroke:#1e3a8a,color:#c9d1d9
-    style C fill:#000000,stroke:#d97706,color:#d97706
-    style D fill:#0d1117,stroke:#1e3a8a,color:#c9d1d9
-    style E fill:#0d1117,stroke:#1e3a8a,color:#c9d1d9
-    style F fill:#0d1117,stroke:#1e3a8a,color:#c9d1d9
-    style G fill:#000000,stroke:#d97706,color:#d97706
-    style H fill:#0d1117,stroke:#1e3a8a,color:#c9d1d9
+    style A fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
+    style B fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
+    style C fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
+    style D fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
+    style E fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
+    style F fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
+    style G fill:#000000,stroke:#d97706,stroke-width:2px,color:#d97706
+    style H fill:#000000,stroke:#1e3a8a,stroke-width:2px,color:#c9d1d9
 ```
 
 ---
